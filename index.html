@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="all.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <div id="landing-page" class="page active">
+        <div class="container">
+            <header class="landing-header">
+                <h1 class="main-title">Resume Builder</h1>
+                <p class="subtitle">Create resumes in minutes</p>
+            </header>
+            <div class="landing-content">
+                <div class="features">
+                    <div class="feature-item">
+                        <i class="fas fa-file-alt"></i>
+                        <h3>Professional Templates</h3>
+                        <p>Choose from multiple templates</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-edit"></i>
+                        <h3>Easy to Use</h3>
+                        <p>Simple form-based interface for quick resume creation</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-download"></i>
+                        <h3>Download PDF</h3>
+                        <p>Export your resume as a PDF document</p>
+                    </div>
+                </div>
+                <button id="start-building-btn" class="btn btn-primary">Start Building</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="template-page" class="page">
+        <div class="container">
+            <header class="page-header">
+                <h2>Choose Your Template</h2>
+                <p>Select a template that best fits your style</p>
+            </header>
+            <div class="templates-grid" id="templates-grid">
+        
+            </div>
+            <div class="navigation">
+                <button id="back-to-landing" class="btn btn-secondary">Back</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="form-page" class="page">
+        <div class="container">
+            <header class="page-header">
+                <h2>Fill Your Details</h2>
+                <p>Provide your information to create your resume</p>
+            </header>
+            <form id="resume-form" class="resume-form">
+                
+                <div class="form-section">
+                    <h3>Personal Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="jobTitle">Job Title *</label>
+                            <input type="text" id="jobTitle" name="jobTitle" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" name="location" placeholder="City, State">
+                        </div>
+                        <div class="form-group">
+                            <label for="website">Website/Portfolio</label>
+                            <input type="url" id="website" name="website" placeholder="https://yourwebsite.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="profilePicture">Profile Picture</label>
+                        <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
+                        <div id="image-preview" class="image-preview"></div>
+                    </div>
+                </div>
+
+                
+                <div class="form-section">
+                    <h3>Professional Summary</h3>
+                    <div class="form-group">
+                        <label for="summary">Summary</label>
+                        <textarea id="summary" name="summary" rows="4" placeholder="Brief professional summary..."></textarea>
+                    </div>
+                </div>
+
+
+                <div class="form-section">
+                    <h3>Work Experience</h3>
+                    <div id="experience-container">
+                        <div class="experience-item">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Job Title *</label>
+                                    <input type="text" name="expJobTitle" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Company *</label>
+                                    <input type="text" name="expCompany" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Start Date *</label>
+                                    <input type="month" name="expStartDate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>End Date</label>
+                                    <input type="month" name="expEndDate">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="expCurrent"> Currently working here
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea name="expDescription" rows="3" placeholder="Describe your responsibilities and achievements..."></textarea>
+                            </div>
+                            <button type="button" class="btn btn-danger remove-experience">Remove</button>
+                        </div>
+                    </div>
+                    <button type="button" id="add-experience" class="btn btn-secondary">Add Experience</button>
+                </div>
+
+                <div class="form-section">
+                    <h3>Education</h3>
+                    <div id="education-container">
+                        <div class="education-item">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Degree *</label>
+                                    <input type="text" name="eduDegree" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Institution *</label>
+                                    <input type="text" name="eduInstitution" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Start Year *</label>
+                                    <input type="number" name="eduStartYear" min="1950" max="2030" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>End Year</label>
+                                    <input type="number" name="eduEndYear" min="1950" max="2030">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>GPA/Grade</label>
+                                <input type="text" name="eduGPA" placeholder="3.8/4.0 or First Class">
+                            </div>
+                            <button type="button" class="btn btn-danger remove-education">Remove</button>
+                        </div>
+                    </div>
+                    <button type="button" id="add-education" class="btn btn-secondary">Add Education</button>
+                </div>
+
+
+                <div class="form-section">
+                    <h3>Skills</h3>
+                    <div class="form-group">
+                        <label for="skills">Skills (comma-separated)</label>
+                        <textarea id="skills" name="skills" rows="3" placeholder="JavaScript, Python, Project Management, etc."></textarea>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <h3>Languages</h3>
+                    <div class="form-group">
+                        <label for="languages">Languages</label>
+                        <textarea id="languages" name="languages" rows="2" placeholder="English (Native), Spanish (Fluent), etc."></textarea>
+                    </div>
+                </div>
+
+                <div class="navigation">
+                    <button type="button" id="back-to-templates" class="btn btn-secondary">Back</button>
+                    <button type="submit" class="btn btn-primary">Preview Resume</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div id="preview-page" class="page">
+        <div class="container">
+            <header class="page-header">
+                <h2>Resume Preview</h2>
+                <p>Review your resume before downloading</p>
+            </header>
+            <div class="preview-container">
+                <div id="resume-preview" class="resume-preview">
+                </div>
+            </div>
+            <div class="navigation">
+                <button id="back-to-form" class="btn btn-secondary">Edit</button>
+                <button id="download-pdf" class="btn btn-primary">
+                    <i class="fas fa-download"></i> Download PDF
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Generating PDF...</p>
+        </div>
+    </div>
+
+
+    <div id="error-message" class="error-message">
+        <div class="error-content">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span id="error-text"></span>
+            <button id="close-error" class="close-error">&times;</button>
+        </div>
+    </div>
+    <script src="html2canvas.min.js"></script>
+<script src="jspdf.umd.min.js"></script>
+    <script src="templates.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
+
+
+
+
+
+
+
+
+
+
+
+
+
